@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <script>
+        function Calculate(operator) {
+            var a = document.getElementById('a').value;
+            var b = document.getElementById('b').value;
+
+            switch (operator) {
+                case '+':
+                    var result = parseFloat(a) + parseFloat(b);
+                    break;
+                case '-':
+                    var result = parseFloat(a) - parseFloat(b);
+                    break;
+                case 'x':
+                    var result = parseFloat(a) * parseFloat(b);
+                    break;
+                case '/':
+                    var result = parseFloat(a) / parseFloat(b);
+                    break;
+            }
+
+            document.getElementById('result').value = '= ' + result;
+        }
+
+
+
+        function palindrome(var1) {
+            let array = var1.split("");
+            let jd = "";
+
+            for (let i = array.length - 1; i >= 0; i--) {
+                jd += array[i];
+            }
+            if (var1 == jd) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        function handlePalindromeForm(form) {
+            let formValue = form.name.value;
+            document.getElementById("palindromeResult").innerHTML = palindrome(formValue);
+        }
+
+        function secondH(array) {
+
+            array = [1, 5, 10, 15];
+            return array[array.length - 2];
+        }
+        console.log(secondH(1, 5, 10, 15));
+    </script>
+</head>
+
+<body>
+    <form id="calculator">
+        <input type="text" id="a" placeholder="a" />
+        <input type="text" id="b" placeholder="b" />
+        <input type="text" id="result" placeholder="=" disabled="disabled" />
+        <br><br>
+        <button type="button" onclick="Calculate(this.innerHTML)">+</button>
+        <button type="button" onclick="Calculate(this.innerHTML)">-</button>
+        <button type="button" onclick="Calculate(this.innerHTML)">x</button>
+        <button type="button" onclick="Calculate(this.innerHTML)">/</button>
+    </form>
+
+
+
+    <form id="palindrome" method="get">
+        <br>
+        <input type="text" name="name" value="">
+        <br>
+        <br>
+        <input type="button" name="button" value="click" onclick="handlePalindromeForm(this.form)">
+    </form>
+    <div id="palindromeResult"></div>
+</body>
+
+</html>
