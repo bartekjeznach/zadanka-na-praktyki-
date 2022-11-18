@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zadanko ze stacjonarnych</title>
+    <script>
+        const array = [1, 2, 3, 4];
+        console.log("przyklad1");
+
+        const initialValue = 10;
+        const sumWithInitial = array.reduce(
+            (previousValue, currentValue) => previousValue - currentValue, initialValue
+        );
+        console.log(sumWithInitial);
+        // expected output: 10 
+
+        //tablice 
+        const array1 = ["Anna", "Maria"];
+        const array2 = ["Adam", "Marek", "Bartek", "Tomek"];
+        const numbers = [1, 2, 3, 4, 5];
+        // zad1 .concat() łaczenie tablic array1 i array2
+        // zad2 .reverse() ostatni element w tablicy 
+        // zad3 .filter() po tablicy arraay2 > filter(array2, arg)
+        // zad4 .reduce() suma elementow w tablicy numbers 
+        // zad5 .map() po tablicy numbers i kazdy element n^2+3
+
+        console.log("concat");
+        const concat1 = array2.concat(array1);
+        console.log(concat1);
+
+        console.log("reverse");
+        const reverse1 = numbers.reverse();
+        console.log(reverse1[0]);
+        console.log(reverse1[4]);
+
+        console.log("filter");
+        const filter1 = numbers.filter(numbers => numbers >= 4);
+        console.log(filter1);
+
+        console.log("reduce");
+        const reduce1 = numbers.reduce((previousValue, currentValue) => previousValue + currentValue, initialValue);
+        console.log(reduce1);
+
+        console.log("map");
+        const map1 = numbers.map(number => number * number + 3);
+        console.log(map1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
