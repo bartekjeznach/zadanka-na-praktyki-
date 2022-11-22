@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>od 6 do 8</title>
+    <script>
+        const books = [{
+            title: 'Total loss',
+            pages: 600,
+            genre: 'fantasy',
+            rating: 5
+        }, {
+            title: 'Total enlightenment',
+            pages: 250,
+            genre: 'romance',
+            rating: 2
+        }, {
+            title: 'Big loss',
+            pages: 400,
+            genre: 'fantasy',
+            rating: 7
+        }, {
+            title: '10th Joy',
+            pages: 32,
+            genre: 'action',
+            rating: 8
+        }, {
+            title: 'Quickfix',
+            pages: 15,
+            genre: 'fantasy',
+            rating: 1
+        }, {
+            title: 'World Ender',
+            pages: 199,
+            genre: 'fantasy',
+            rating: 3
+        }, {
+            title: 'Paranormal',
+            pages: 200,
+            genre: 'thriller',
+            rating: 9
+        }, {
+            title: '300',
+            pages: 600,
+            genre: 'criminology',
+            rating: 10
+        }, {
+            title: 'Renewer',
+            pages: 472,
+            genre: 'biology',
+            rating: 2
+        }, ];
+
+        //PRZYKŁADY:
+        //tworzymy funkcje
+        const filterTitleStartsWithTotal = (list) => list.filter((book) => book.title.startsWith('Total'));
+        const filterGenreIsFantasy = (list) => list.filter((book) => book.genre === 'fantasy');
+        const mapToPages = (list) => list.map(({
+            pages
+        }) => pages);
+        const sumPages = (book) => book.reduce((currSum, newPage) => currSum + newPage)
+            //tworzymy kompozycje
+        const badCompose = (fn1, fn2, fn3) => (x) => fn3(fn2(fn1(x)));
+        const compose = (...fns) => (x) => fns.reduceRight((acc, fn) => fn(acc), x);
+        //tworzymy funkcję używającą kompozycji
+        const titleStartsWithTotalPages = compose(sumPages, mapToPages, filterTitleStartsWithTotal);
+        const genreIsFantasyPages = compose(sumPages, mapToPages, filterGenreIsFantasy);
+        //wypisujemy dla książek
+        console.log(titleStartsWithTotalPages(books));
+        console.log(genreIsFantasyPages(books));
+
+
+        //6
+        const title = (list) => list.map(({
+            title
+        }) => title = title.split(" ").join("").length);
+
+        const evenPages = (list) => list.filter((book) => book.pages % 2 != 1);
+
+        const withY = (list) => list.filter((book) => book.genre[book.genre.length - 1] == "y");
+
+        const task6 = compose(withY, evenPages, title);
+        console.log(task6(books));
+
+        //7
+        const oddPages = (list) => list.filter((book) => book.pages % 2 == 1);
+
+        const positive = (list) => list.filter((book) => book.rating > 5);
+
+        const withNumber = (list) => list.filter((book) => /\d/.test(book.title));
+        const task7 = compose(withNumber, positive, oddPages);
+        console.log(task7(books));
+
+        //8
+
+        const secondLongest = (list) => list.map(book => book.title);
+        const sdLongest = (list) => list.sort((a, b) => a.length - b.length).reverse()[1];
+        const task8 = compose(secondLongest, sdLongest);
+        console.log(task8(books));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
