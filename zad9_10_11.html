@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script>
+        //zad 9
+        const promise = new Promise((resolve) => {
+
+            setTimeout(() => {
+                console.log("task9")
+                resolve("Udało się!");
+            }, 5000)
+
+        });
+        promise.then(result => console.log(result));
+
+        //zad 10
+        word = "porazka";
+        var multiplyAsync = (x, y) => {
+            return new Promise((resolve, reject) => {
+                if (typeof x !== 'number' || typeof y !== 'number') {
+
+                    reject(result);
+                } else {
+
+                    resolve(x * y);
+                }
+            }, 5000)
+
+        };
+        multiplyAsync(5, 6).then(console.log).catch((error) => {
+            console.log(tekst);
+        })
+        multiplyAsync(5, "word").then(console.log).catch((error) => {
+            console.log(word);
+        })
+    </script>
+
+</head>
+
+</html>
